@@ -29,6 +29,16 @@ function setup() {
   bow = createSprite(380,220,20,50);
   bow.addImage(bowImage); 
   bow.scale = 1;
+
+  redB=new Group()
+  greenB=new Group()
+  blueB=new Group()
+  pinkB=new Group()
+  arrowGroup=new Group()
+
+
+
+
   
    score = 0    
 }
@@ -83,6 +93,8 @@ function draw() {
   arrow.velocityX = -4;
   arrow.lifetime = 100;
   arrow.scale = 0.3;
+  arrowGroup.add(arrow)
+  return arrow
 }
 
 function redBalloon() {
@@ -91,6 +103,8 @@ function redBalloon() {
   red.velocityX = 3;
   red.lifetime = 150;
   red.scale = 0.1;
+  redB.add(red)
+  return red
 }
 
 function blueBalloon() {
@@ -98,7 +112,9 @@ function blueBalloon() {
   blue.addImage(blue_balloonImage);
   blue.velocityX = 3;
   blue.lifetime = 150;
-  blue.scale = 0.1;
+  blue.scale = 0.1; 
+  blueB.add(blue)
+  return blue
 }
 
 function greenBalloon() {
@@ -107,6 +123,8 @@ function greenBalloon() {
   green.velocityX = 3;
   green.lifetime = 150;
   green.scale = 0.1;
+  greenB.add(green)
+  return green
 }
 
 function pinkBalloon() {
@@ -115,40 +133,34 @@ function pinkBalloon() {
   pink.velocityX = 3;
   pink.lifetime = 150;
   pink.scale = 1
-}
-redballoon=new Group();
-greenBalloon=new Group();
-blueBalloon=new Group();
-pinkBalloon=new Group();
-arrow=new Group();
-
-
-greenBalloonGroup.add(greenBalloon);
-pinkBalloonGroup.add(pinkBalloon);
-blueBalloonGroup.add(blueBalloon);
-redBalloonGroup.add(redBalloon);
-arrowGroup.add(arrow);
-
-if(arrowGroup.isTouching(redBalloon)){
-  redBalloon.destoryEach();
-  arrowGroup.destoryEach();
-  score=score+1;
+  pinkB.add(pink)
+  return pink
 }
 
-if(arrowGroup.isTouching(greenBalloon)){
-  greenBalloon.destoryEach();
-  arrowGroup.destoryEach();
-  score=score+1;
+
+
+
+
+if(arrowGroup.isTouching(redB)){
+  redB.destoryEach()
+  arrowGroup.destoryEach()
+  score=score+1
 }
 
-if(arrowGroup.isTouching(blueBalloon)){
-  blueBalloon.destoryEach();
-  arrowGroup.destoryEach();
-  score=score+1;
+if(arrowGroup.isTouching(greenB)){
+  greenB.destoryEach()
+  arrowGroup.destoryEach()
+  score=score+1
 }
 
-if(arrowGroup.isTouching(pinkBalloon)){
-  pinkBalloon.destoryEach();
-  arrowGroup.destoryEach();
-  score=score+1;
+if(arrowGroup.isTouching(blueB)){
+  blueB.destoryEach()
+  arrowGroup.destoryEach()
+  score=score+1
+}
+
+if(arrowGroup.isTouching(pinkB)){
+  pinkB.destoryEach()
+  arrowGroup.destoryEach()
+  score=score+1
 }
